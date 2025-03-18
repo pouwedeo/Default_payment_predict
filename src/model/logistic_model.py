@@ -1,7 +1,7 @@
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.metrics import accuracy_score
-from data_preped import data_preped
+from src.data.data_preped import data_preped
 from src.mlflow_Tracker.mlflowTracker import MLflowTracker
 import subprocess
 import time
@@ -34,6 +34,7 @@ metrics = {"Recall": recall_metrics[0], "Precision": recall_metrics[1],
            "F1-score": recall_metrics[2], "Accuracy": accuracy
            }
 
+# Mlflow Tracker
 tracker = MLflowTracker()
 tracker.train_and_log(
                      run_name="LogisticRegression", params="null",
