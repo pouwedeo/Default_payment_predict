@@ -1,28 +1,53 @@
-import streamlit as st 
+import streamlit as st
 
-st.sidebar.radio("Regression Logistique", 2)
+
+# Side Bar
+model_predict = st.sidebar.radio(
+    "Choisir Son Modèle De Prédiction",
+    ["Régression Logistique", "Arbre de Décision", "Forêt Aléatoire",
+     "XgBoost", "Lightgbm", "CatBoost"]
+)
+
+
+if model_predict == "Régression Logistique":
+    st.write("Régression Logistique")
+elif model_predict == "Arbre de Décision":
+    st.write("Arbre de Décision")
+elif model_predict == "Forêt Aléatoire":
+    st.write("Forêt Aléatoire")
+
+elif model_predict == "XgBoost":
+    st.write("XgBoost")
+elif model_predict == "Lightgbm":
+    st.write("Lightgbm")
+elif model_predict == "CatBoost":
+    st.write("CatBoost")
+
+
 st.header("Bienvenue dans votre similateur de prêt")
 
 st.markdown("""
-   <h5 style='color: purple; text-decoration: underline;'> 
+   <h5 style='color: black;'> 
    Veuillez Renseigner Les Champs<h5>
 """, unsafe_allow_html=True)
 
+# Forms
 col1, col2, col3 = st.columns(3)
 
 col4, col5, col6 = st.columns(3)
 
-col1.number_input("age")
-col2.number_input("prix")
-col3.number_input("sexe")
+credit_lines_outstanding = col1.number_input("Lignes De Crédit En Cours")
+loan_amt_outstanding = col2.number_input("Montant Du Prêt En Cours")
+total_debt_outstanding = col3.number_input("Dette Totale En Cours")
 
-col4.number_input("nom")
-col5.number_input("fix")
-col6.number_input("emal")
+income = col4.number_input("Salaire ")
+years_employed = col5.number_input("Années D'Emploi")
+fico_score = col6.number_input("Score De Crédit")
 
-st.button("Valider")
+if st.button("Valider"):
+    st.write("Ok")
 
-
+# Response
 st.markdown("""
       <p style='font-weight: bold; text-align: center; background-color: #188632; color: white; padding: 10px; border-radius: 5px;'>
       Bonjour

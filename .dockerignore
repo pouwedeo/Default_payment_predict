@@ -1,0 +1,9 @@
+
+README.md
+.git*
+LICENSE
+/venv
+/data
+/src/notebook
+/src/model
+/src/mlflow_Tracker
