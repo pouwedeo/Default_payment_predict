@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pouwe/workspace/projets/MLOPS/projet/Default_payment_predict/mlruns/300768967115414390/531cbec513694bfa97f11a1707e5fb0e/artifacts
+end_time: 1742393617398
+entry_point_name: ''
+experiment_id: '300768967115414390'
+lifecycle_stage: active
+run_id: 531cbec513694bfa97f11a1707e5fb0e
+run_name: LogisticRegression
+run_uuid: 531cbec513694bfa97f11a1707e5fb0e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1742393609745
+status: 3
+tags: []
+user_id: pouwe

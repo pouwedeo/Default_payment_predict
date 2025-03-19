@@ -38,7 +38,7 @@ metrics = {"Recall": recall_metrics[0], "Precision": recall_metrics[1],
 tracker = MLflowTracker()
 tracker.train_and_log(
                      run_name="LogisticRegression", params="null",
-                     metrics=metrics, model_name=model_lr,
+                     metrics=accuracy, model_name=model_lr,
                      X_val=X_test, artifacts_path="Logistic_predict"
                       )
 mlflow_process.wait()
