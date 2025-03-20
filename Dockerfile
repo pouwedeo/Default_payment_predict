@@ -14,7 +14,7 @@ COPY . /app/
 # Install Python dependencies
 RUN pip install --no-cache-dir --upgrade pip &&\
     pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt &&\
-    pip install streamlit && streamlit --version
+    pip install streamlit && streamlit --version\
     pip uninstall -y lightgbm && pip install --no-cache-dir lightgbm
 
 # Expose Streamlit port
