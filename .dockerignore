@@ -7,3 +7,5 @@ LICENSE
 /src/notebook
 /src/model
 /src/mlflow_Tracker
+/mlruns
+/catboost_info
