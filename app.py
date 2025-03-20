@@ -11,19 +11,19 @@ model_predict = st.sidebar.radio(
 model = ""
 if model_predict == "Régression Logistique":
     model = "src/artifacts/Logistic_predict.pkl"
-    
+
 elif model_predict == "Arbre de Décision":
     model = "src/artifacts/DecisionTree_predict.pkl"
-    
+
 elif model_predict == "Forêt Aléatoire":
     model = "src/artifacts/RandomForest_predict.pkl"
-    
+
 elif model_predict == "XgBoost":
     model = "src/artifacts/XGB_predict.pkl"
-    
+
 elif model_predict == "Lightgbm":
     model = "src/artifacts/Lgb_predict.pkl"
-    
+
 elif model_predict == "CatBoost":
     model = "src/artifacts/CatBoost_predict.pkl"
 
