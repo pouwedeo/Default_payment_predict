@@ -11,4 +11,7 @@ COPY .  /app/
 RUN pip install --no-cache-dir --upgrade pip &&\
     pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt
 
-CMD ["streamlit", "run", "app.py"]
+# Expose Streamlit port
+EXPOSE 8501
+
+CMD ["streamlit", "run", "app.py","--server.port=8501", "--server.address=0.0.0.0"]
