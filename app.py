@@ -55,13 +55,13 @@ if st.button("Valider"):
     if prediction[0] == 1:
         st.markdown("""
         <p style='font-weight: bold; text-align: center; background-color:
-        #188632; color: white; padding: 10px; border-radius: 5px;'>
+        #c65e2df0; color: white; padding: 10px; border-radius: 5px;'>
         Désolé, votre client n'est pas éligible pour un prêt
         </p> """, unsafe_allow_html=True)
     elif prediction[0] == 0:
         st.markdown("""
         <p style='font-weight: bold; text-align: center; background-color: 
-        #188632; color: white; padding: 10px; border-radius: 5px;'>
+        #1ba03b; color: white; padding: 10px; border-radius: 5px;'>
          Félicitation, votre client est éligible pour un prêt!
         </p> """, unsafe_allow_html=True)
 
