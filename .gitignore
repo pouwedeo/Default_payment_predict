@@ -1,4 +1,4 @@
-data/Loan_Data.csv
+Loan_Data.csv
 venv/
 mlruns
 catboost_info
