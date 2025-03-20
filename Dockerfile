@@ -11,4 +11,4 @@ COPY .  /app/
 RUN pip install --no-cache-dir --upgrade pip &&\
     pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt
 
-CMD ["streamlit run", "app.py"]
+CMD ["streamlit", "run", "app.py"]
