@@ -48,7 +48,7 @@ jobs:
 
         - name: Format
           run: |
-            black app.py
+           streamlit run app.py
 # The fourth step formats the app.py file using the black code formatter.
 
         - name: Lint
