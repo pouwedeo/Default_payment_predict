@@ -13,9 +13,8 @@ class MLflowTracker:
                       artifacts_path):
         with mlflow.start_run(run_name=run_name):
             # Log des paramètres et métriques
-            mlflow.log_param("Params", params)
-            mlflow.log_metric("Metrics", metrics)
+            mlflow.log_params(params)
+            mlflow.log_metrics(metrics)
             mlflow.sklearn.log_model(sk_model=model_name, input_example=X_val,
                                      artifact_path=artifacts_path)
 
-            print(f"Modèle {model_name} enregistré")

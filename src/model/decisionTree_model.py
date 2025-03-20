@@ -1,5 +1,5 @@
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import roc_auc_score, classification_report
 from src.data.data_preped import data_preped
 from src.mlflow_Tracker.mlflowTracker import MLflowTracker
 import subprocess
@@ -13,15 +13,29 @@ X_train_balanced, X_test, y_train_balanced, y_test = data_preped()
 
 dt_model = DecisionTreeClassifier()
 dt_model.fit(X_train_balanced, y_train_balanced)
-dt_pred = dt_model.predict(X_test)
-accuracy = accuracy_score(y_test, dt_pred)
-metrics = accuracy
+y_pred = dt_model.predict(X_test)
+
+recall_metrics = classification_report(y_test, y_pred, output_dict=True)
+
+roc_auc = roc_auc_score(y_test, y_pred)
+
+metrics = {
+    "precision_0": recall_metrics["0"]["precision"],
+    "recall_0": recall_metrics["0"]["recall"],
+    "f1_score_0": recall_metrics["0"]["f1-score"],
+    "precision_1": recall_metrics["1"]["precision"],
+    "recall_1": recall_metrics["1"]["recall"],
+    "f1_score_1": recall_metrics["1"]["f1-score"],
+    "roc_auc": roc_auc
+}
+
 
 # Mlflow Tracker
+
 tracker = MLflowTracker()
 tracker.train_and_log(
-                     run_name="DecisionTree", params="null",
-                     metrics=metrics, model_name=dt_model,
-                     X_val=X_test, artifacts_path="DecisionTree_predict"
-                      )
+    run_name="DecisionTree", params={},
+    metrics=metrics, model_name=dt_model,
+    X_val=X_test, artifacts_path="DecisionTree_predict"
+)
 mlflow_process.wait()
