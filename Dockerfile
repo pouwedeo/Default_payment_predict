@@ -3,7 +3,10 @@ FROM python:3.12-slim
 # Set working directory
 WORKDIR /app
 
-
+# Install required system dependencies
+RUN apt-get update && apt-get install -y \
+    libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy source code
 COPY . /app/
