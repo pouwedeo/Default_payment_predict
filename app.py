@@ -1,5 +1,5 @@
 import streamlit as st
-from src.model_deployement.modelDeployent import model_pred
+from src.model_deployement.modelDeployent import model_pred, model_arize
 
 # Side Bar
 model_predict = st.sidebar.radio(
@@ -9,24 +9,30 @@ model_predict = st.sidebar.radio(
 )
 # Model of predition
 model = ""
+model_name = ""
 if model_predict == "Régression Logistique":
     model = "src/artifacts/Logistic_predict.pkl"
-
+    model_name = "Régression_Logistique"
+    
 elif model_predict == "Arbre de Décision":
     model = "src/artifacts/DecisionTree_predict.pkl"
-
+    model_name = "Arbre_de_Décision"
+    
 elif model_predict == "Forêt Aléatoire":
     model = "src/artifacts/RandomForest_predict.pkl"
-
+    model_name = "Forêt_Aléatoire"
+    
 elif model_predict == "XgBoost":
     model = "src/artifacts/XGB_predict.pkl"
-
+    model_name = "XgBoost"
+    
 elif model_predict == "Lightgbm":
     model = "src/artifacts/Lgb_predict.pkl"
-
+    model_name = "Lightgbm"
+    
 elif model_predict == "CatBoost":
     model = "src/artifacts/CatBoost_predict.pkl"
-
+    model_name = "CatBoost"
 # Page header
 st.header("Bienvenue dans votre similateur de prêt")
 
@@ -44,7 +50,7 @@ total_debt_outstanding = col3.number_input("Dette totale en cours")
 income = col4.number_input("Salaire ")
 years_employed = col5.number_input("Années d'emploi")
 fico_score = col6.number_input("Score de crédit")
-
+actual_label = st.number_input("Label actuel")
 # Feature array
 features = [credit_lines_outstanding, loan_amt_outstanding,
             total_debt_outstanding, income, years_employed, fico_score]
@@ -58,12 +64,18 @@ if st.button("Valider"):
         #c65e2df0; color: white; padding: 10px; border-radius: 5px;'>
         Désolé, votre client n'est pas éligible pour un prêt
         </p> """, unsafe_allow_html=True)
+
     elif prediction[0] == 0:
         st.markdown("""
         <p style='font-weight: bold; text-align: center; background-color: 
         #1ba03b; color: white; padding: 10px; border-radius: 5px;'>
          Félicitation, votre client est éligible pour un prêt!
         </p> """, unsafe_allow_html=True)
+        
+    # Monitoring
+    model_arize(features, model_name, prediction[0], actual_label)
 
 
-# Response
+
+
+

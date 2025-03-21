@@ -2,3 +2,4 @@ Loan_Data.csv
 venv/
 mlruns
 catboost_info
+.env

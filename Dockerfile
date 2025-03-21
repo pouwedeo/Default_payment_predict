@@ -20,6 +20,13 @@ RUN pip install --no-cache-dir --upgrade pip &&\
 # Expose Streamlit port
 EXPOSE 8501
 
+
+# Set environment variables for Arize AI (these values are passed at build time)
+ARG ARIZE_API_KEY
+ARG ARIZE_SPACE_KEY
+ENV ARIZE_API_KEY=$ARIZE_API_KEY
+ENV ARIZE_SPACE_KEY=$ARIZE_SPACE_KEY
+
 # Set entrypoint and command
 ENTRYPOINT ["streamlit"]
 CMD ["run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]

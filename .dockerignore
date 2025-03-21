@@ -9,3 +9,4 @@ LICENSE
 /src/mlflow_Tracker
 /mlruns
 /catboost_info
+.env
