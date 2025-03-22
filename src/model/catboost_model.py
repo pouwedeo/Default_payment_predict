@@ -36,6 +36,6 @@ tracker = MLflowTracker()
 tracker.train_and_log(
                      run_name="CatBoost", params={},
                      metrics=metrics, model_name=cb_model,
-                     X_val=X_test, artifacts_path="CatBoost_predict"
-                      )
+                     X_val=X_test, artifacts_path="CatBoost_predict",
+                     experiment_name="Loan_Predict_CatBoost")
 mlflow_process.wait()

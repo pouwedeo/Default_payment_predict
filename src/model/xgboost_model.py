@@ -40,6 +40,7 @@ tracker = MLflowTracker()
 tracker.train_and_log(
                      run_name="XGBOOST", params=params,
                      metrics=metrics, model_name=xgb_model,
-                     X_val=X_test, artifacts_path="XGB_predict"
+                     X_val=X_test, artifacts_path="XGB_predict",
+                     experiment_name="Loan_Predict_XGBOOST"
                       )
 mlflow_process.wait()

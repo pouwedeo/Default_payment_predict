@@ -36,6 +36,7 @@ tracker = MLflowTracker()
 tracker.train_and_log(
     run_name="DecisionTree", params={},
     metrics=metrics, model_name=dt_model,
-    X_val=X_test, artifacts_path="DecisionTree_predict"
+    X_val=X_test, artifacts_path="DecisionTree_predict",
+    experiment_name="Loan_Predict_DecisionTree"
 )
 mlflow_process.wait()

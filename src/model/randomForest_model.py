@@ -40,6 +40,7 @@ tracker = MLflowTracker()
 tracker.train_and_log(
                      run_name="RandomForest", params=params,
                      metrics=metrics, model_name=rf_model,
-                     X_val=X_test, artifacts_path="RandomForest_predict"
+                     X_val=X_test, artifacts_path="RandomForest_predict",
+                     experiment_name="Loan_Predict_RandomForest"
                       )
 mlflow_process.wait()

@@ -35,6 +35,7 @@ tracker = MLflowTracker()
 tracker.train_and_log(
     run_name="lightgbm", params={},
     metrics=metrics, model_name=lgb_model,
-    X_val=X_test, artifacts_path="Lgb_predict"
+    X_val=X_test, artifacts_path="Lgb_predict",
+    experiment_name="Loan_Predict_lightgbm"
 )
 mlflow_process.wait()

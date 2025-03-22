@@ -10,7 +10,11 @@ class MLflowTracker:
         mlflow.set_experiment_tag("version", "1.0")
 
     def train_and_log(self, run_name, params, metrics, model_name, X_val,
-                      artifacts_path):
+                      artifacts_path,  experiment_name=None):
+        
+        if experiment_name:
+            mlflow.set_experiment(experiment_name)
+
         with mlflow.start_run(run_name=run_name):
             # Log des paramètres et métriques
             mlflow.log_params(params)

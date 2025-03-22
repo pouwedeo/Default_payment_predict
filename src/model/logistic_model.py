@@ -45,6 +45,7 @@ tracker = MLflowTracker()
 tracker.train_and_log(
                      run_name="LogisticRegression", params={},
                      metrics=metrics, model_name=model_lr,
-                     X_val=X_test, artifacts_path="Logistic_predict"
+                     X_val=X_test, artifacts_path="Logistic_predict",
+                     experiment_name="Loan_Predict_Logistic"
                       )
 mlflow_process.wait()
