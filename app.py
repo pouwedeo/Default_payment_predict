@@ -8,7 +8,7 @@ model_predict = st.sidebar.radio(
      "XgBoost", "Lightgbm", "CatBoost"]
 )
 # Model of predition
-model = ""
+model = "" 
 model_name = ""
 if model_predict == "Régression Logistique":
     model = "src/artifacts/Logistic_predict.pkl"
