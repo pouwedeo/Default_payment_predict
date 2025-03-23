@@ -1,13 +1,14 @@
+# Importation des bibliothèques
 import streamlit as st
 from src.model_deployement.modelDeployent import model_pred, model_arize
 
-# Side Bar
+# Side Bar (modèle de prédiction)
 model_predict = st.sidebar.radio(
     "Choisir Son Modèle De Prédiction",
     ["Régression Logistique", "Arbre de Décision", "Forêt Aléatoire",
      "XgBoost", "Lightgbm", "CatBoost"]
 )
-# Model of predition
+# Model of predition (Chargement du modèle correspondant)
 model = ""
 model_name = ""
 if model_predict == "Régression Logistique":
@@ -39,7 +40,7 @@ st.header("Bienvenue dans votre similateur de prêt")
 st.markdown("""<h5 style='color: black;'> 
    Veuillez renseigner les champs<h5>""", unsafe_allow_html=True)
 
-# Forms
+# Forms (caractéristiques du client)
 col1, col2, col3 = st.columns(3)
 col4, col5, col6 = st.columns(3)
 
@@ -51,11 +52,11 @@ income = col4.number_input("Salaire ")
 years_employed = col5.number_input("Années d'emploi")
 fico_score = col6.number_input("Score de crédit")
 actual_label = st.number_input("Label actuel")
-# Feature array
+# Feature array (tableau des caractéristiques)
 features = [credit_lines_outstanding, loan_amt_outstanding,
             total_debt_outstanding, income, years_employed, fico_score]
 
-# Prediction validation
+# Prediction validation (Prédiction et résultats de la prédiction)
 if st.button("Valider"):
     prediction = model_pred(features, model)
     if prediction[0] == 1:
@@ -72,7 +73,7 @@ if st.button("Valider"):
          Félicitation, votre client est éligible pour un prêt!
         </p> """, unsafe_allow_html=True)
         
-    # Monitoring
+    # Monitoring (Enregistrement de la prédiction pour le monitoring)
     model_arize(features, model_name, prediction[0], actual_label)
 
 
