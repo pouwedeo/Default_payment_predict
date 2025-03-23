@@ -73,9 +73,5 @@ if st.button("Valider"):
         </p> """, unsafe_allow_html=True)
         
     # Monitoring
-    model_arize(features, model_name, prediction[0], actual_label)
-
-
-
-
+  model_arize(features, model_name, prediction[0], actual_label)
 
