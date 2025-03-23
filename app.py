@@ -75,6 +75,8 @@ if st.button("Valider"):
     # Monitoring
     model_arize(features, model_name, prediction[0], actual_label)
 
+#test
+
 
 
 
