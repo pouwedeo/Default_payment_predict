@@ -77,5 +77,22 @@ if st.button("Valider"):
 
 
 
+from sklearn.metrics import confusion_matrix
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Générer la matrice de confusion après chaque prédiction
+true_label = [1]
+cm = confusion_matrix(true_label, prediction)
+fig, ax = plt.subplots()
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
+            xticklabels=['Pas de défaut', 'Défaut'],
+            yticklabels=['Pas de défaut', 'Défaut'])
+plt.xlabel('Prédit')
+plt.ylabel('Réel')
+plt.title('Matrice de confusion')
+st.pyplot(fig)
+
+
 
 
