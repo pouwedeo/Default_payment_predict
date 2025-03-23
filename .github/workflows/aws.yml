@@ -6,11 +6,11 @@ on:
 
 env:
   AWS_REGION: eu-north-1
-  ECR_REPOSITORY: mlops
-  ECS_SERVICE: mlopsservice
-  ECS_CLUSTER: mlopsclusterdata
-  ECS_TASK_DEFINITION: mlopscatboost
-  CONTAINER_NAME: mlops
+  ECR_REPOSITORY: loanpredict
+  ECS_SERVICE: loanpredictservice 
+  ECS_CLUSTER: loanpredictcluster
+  ECS_TASK_DEFINITION: loanpredictmodel
+  CONTAINER_NAME: loanpredictconteneur
 
 permissions:
   contents: read

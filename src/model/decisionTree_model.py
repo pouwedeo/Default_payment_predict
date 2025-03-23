@@ -34,7 +34,7 @@ metrics = {
 
 tracker = MLflowTracker()
 tracker.train_and_log(
-    run_name="DecisionTree", params={},
+    run_name="DecisionTree_newparams", params={},
     metrics=metrics, model_name=dt_model,
     X_val=X_test, artifacts_path="DecisionTree_predict",
     experiment_name="Loan_Predict_DecisionTree"

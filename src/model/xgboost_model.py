@@ -13,8 +13,13 @@ X_train_balanced, X_test, y_train_balanced, y_test = data_preped()
 
 # XGBOOST Moel
 params = {
-    "use_label_encoder": False,
-    "eval_metric": 'mlogloss'
+     "n_estimators": 90,
+     "max_depth": 12,
+     "min_samples_split": 11,
+     "min_samples_leaf": 5,
+     "bootstrap": True,
+     "oob_score": False,
+     "random_state": 888,
 }
 xgb_model = xgb.XGBClassifier(**params)
 xgb_model.fit(X_train_balanced, y_train_balanced)
@@ -38,7 +43,7 @@ metrics = {
 # Mlflow Tracker
 tracker = MLflowTracker()
 tracker.train_and_log(
-                     run_name="XGBOOST", params=params,
+                     run_name="XGBOOST_newparams", params=params,
                      metrics=metrics, model_name=xgb_model,
                      X_val=X_test, artifacts_path="XGB_predict",
                      experiment_name="Loan_Predict_XGBOOST"

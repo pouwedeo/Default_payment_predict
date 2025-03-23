@@ -13,8 +13,13 @@ X_train_balanced, X_test, y_train_balanced, y_test = data_preped()
 
 # RandomForest Model
 params = { 
-          "n_estimators": 100,
-          "random_state": 42
+            "n_estimators": 90,
+            "max_depth": 12,
+            "min_samples_split": 11,
+            "min_samples_leaf": 5,
+            "bootstrap": True,
+            "oob_score": False,
+            "random_state": 888,
           }
 rf_model = RandomForestClassifier(**params)
 rf_model.fit(X_train_balanced, y_train_balanced)
@@ -38,7 +43,7 @@ metrics = {
 # Mlflow Tracker
 tracker = MLflowTracker()
 tracker.train_and_log(
-                     run_name="RandomForest", params=params,
+                     run_name="RandomForest_ewparams", params=params,
                      metrics=metrics, model_name=rf_model,
                      X_val=X_test, artifacts_path="RandomForest_predict",
                      experiment_name="Loan_Predict_RandomForest"

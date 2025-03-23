@@ -13,7 +13,14 @@ time.sleep(2)
 X_train_balanced, X_test, y_train_balanced, y_test = data_preped()
 
 # Entrainement du modèle logistic
-model_lr = LogisticRegression()
+params = {
+    "C": 1.0,
+    "penalty": "l2",
+    "solver": "lbfgs",
+    "max_iter": 100,
+    "random_state": 888,
+}
+model_lr = LogisticRegression(**params)
 model_lr.fit(X_train_balanced, y_train_balanced)
 
 # Prédiction sur les données de test
@@ -43,7 +50,7 @@ metrics = {
 # Mlflow Tracker
 tracker = MLflowTracker()
 tracker.train_and_log(
-                     run_name="LogisticRegression", params={},
+                     run_name="LogisticRegression_newparams", params=params,
                      metrics=metrics, model_name=model_lr,
                      X_val=X_test, artifacts_path="Logistic_predict",
                      experiment_name="Loan_Predict_Logistic"

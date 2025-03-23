@@ -12,7 +12,12 @@ time.sleep(2)
 X_train_balanced, X_test, y_train_balanced, y_test = data_preped()
 
 # CatBoost Model
-cb_model = cb.CatBoostClassifier(verbose=0)
+params = {
+    "n_estimators": 90,
+    "max_depth": 12,
+    "random_state": 888,
+}
+cb_model = cb.CatBoostClassifier(**params)
 cb_model.fit(X_train_balanced, y_train_balanced)
 y_pred = cb_model.predict(X_test)
 
@@ -34,7 +39,7 @@ metrics = {
 # Mlflow Tracker
 tracker = MLflowTracker()
 tracker.train_and_log(
-                     run_name="CatBoost", params={},
+                     run_name="CatBoost_newparams", params=params,
                      metrics=metrics, model_name=cb_model,
                      X_val=X_test, artifacts_path="CatBoost_predict",
                      experiment_name="Loan_Predict_CatBoost")
