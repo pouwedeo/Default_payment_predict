@@ -75,6 +75,7 @@ if st.button("Valider"):
         
     # Monitoring (Enregistrement de la prédiction pour le monitoring)
     model_arize(features, model_name, prediction[0], actual_label)
+    #Fin
 
 #test
 
