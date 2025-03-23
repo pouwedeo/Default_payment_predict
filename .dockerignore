@@ -10,3 +10,4 @@ LICENSE
 /mlruns
 /catboost_info
 .env
+/mlartifacts
