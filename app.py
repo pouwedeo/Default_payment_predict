@@ -34,7 +34,7 @@ elif model_predict == "CatBoost":
     model = "src/artifacts/CatBoost_predict.pkl"
     model_name = "CatBoost"
 # Page header
-st.header("Bienvenue dans votre similateur de prêt")
+st.header("Bienvenue dans votre simulateur de prêt")
 
 st.markdown("""<h5 style='color: black;'> 
    Veuillez renseigner les champs<h5>""", unsafe_allow_html=True)
